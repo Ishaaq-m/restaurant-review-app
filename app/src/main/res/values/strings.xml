@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Restaurant Review App</string>
+    <string name="home">Home</string>
+    <string name="my_reviews">My Reviews</string>
+    <string name="favourites">Favourites</string>
+    <string name="account">Account</string>
 </resources>
