@@ -4,4 +4,9 @@
     <string name="my_reviews">My Reviews</string>
     <string name="favourites">Favourites</string>
     <string name="account">Account</string>
+    <string name="register">Register</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="create_account">Create account</string>
+    <string name="cancel">Cancel</string>
 </resources>
