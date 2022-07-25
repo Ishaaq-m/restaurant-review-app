@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="" />
+        app:layout_constraintBottom_toTopOf="@id/user_email" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/user_email"
