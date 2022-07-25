@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth;
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         val passwordInput = findViewById<TextInputEditText>(R.id.password_input)
 
         val email = emailInput.text.toString().trim()
-        val password = emailInput.text.toString().trim()
+        val password = passwordInput.text.toString().trim()
 
         if (email.isEmpty()) {
             emailInput.error = getString(R.string.email_required_msg)
