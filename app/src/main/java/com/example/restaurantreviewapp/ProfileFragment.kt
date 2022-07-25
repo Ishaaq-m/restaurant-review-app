@@ -1,5 +1,6 @@
 package com.example.restaurantreviewapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,15 +31,33 @@ class ProfileFragment : Fragment() {
 
         val logoutBtn = view.findViewById<MaterialButton>(R.id.logout_btn)
 
+        logoutBtn.setOnClickListener {
+            logout()
+        }
+
         val user = auth.currentUser
 
         if (user != null) {
             emailText.text = user.email
         }
+        else {
+            val supportFragment = LoggedOutFragment()
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.frame_layout, supportFragment)
+                commit()
+            }
+        }
 
-        return view;
+        return view
     }
 
+    private fun logout() {
+        auth.signOut()
+
+        val intent = Intent(activity, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
 
 
 }
