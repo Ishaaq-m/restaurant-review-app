@@ -13,4 +13,6 @@
     <string name="password_required_msg">You must enter a password</string>
     <string name="password_length_msg">Password must be at least 6 characters</string>
     <string name="log_out">Log out</string>
+    <string name="login">Login</string>
+    <string name="feature_requires_login">You must be signed in to use this feature</string>
 </resources>
