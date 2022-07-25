@@ -12,4 +12,5 @@
     <string name="email_required_msg">You must enter an email</string>
     <string name="password_required_msg">You must enter a password</string>
     <string name="password_length_msg">Password must be at least 6 characters</string>
+    <string name="log_out">Log out</string>
 </resources>
