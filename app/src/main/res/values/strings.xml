@@ -9,4 +9,7 @@
     <string name="hint_password">Password</string>
     <string name="create_account">Create account</string>
     <string name="cancel">Cancel</string>
+    <string name="email_required_msg">You must enter an email</string>
+    <string name="password_required_msg">You must enter a password</string>
+    <string name="password_length_msg">Password must be at least 6 characters</string>
 </resources>
