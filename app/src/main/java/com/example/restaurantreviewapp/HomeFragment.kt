@@ -6,20 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.restaurantreviewapp.models.Restaurant
+import com.example.restaurantreviewapp.viewmodels.RestaurantListViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
     private lateinit var restaurantAdapter: RestaurantRecyclerViewAdapter
     private var restaurantList = ArrayList<Restaurant>()
+    private lateinit var restaurantListViewModel: RestaurantListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        restaurantListViewModel = ViewModelProvider(this).get(RestaurantListViewModel::class.java)
+
         (requireActivity() as MainActivity).supportActionBar?.title = getString(R.string.home_header)
+
     }
 
     override fun onCreateView(
@@ -37,5 +43,17 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = restaurantAdapter
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        restaurantListViewModel.getRestaurants().observe(viewLifecycleOwner, { restaurants ->
+            if (restaurants != null) {
+                restaurantList.clear()
+                restaurantList.addAll(restaurants)
+                restaurantAdapter.notifyDataSetChanged()
+            }
+        })
     }
 }
