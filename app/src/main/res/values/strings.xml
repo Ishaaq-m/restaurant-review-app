@@ -18,4 +18,7 @@
     <string name="login_error_msg">Could not log in to account</string>
     <string name="food_mania">Food Mania</string>
     <string name="home_of_restaurant_reviews">The Home of Restaurant Reviews</string>
+    <string name="title">Title</string>
+    <string name="address">Address</string>
+    <string name="home_header">Home</string>
 </resources>
