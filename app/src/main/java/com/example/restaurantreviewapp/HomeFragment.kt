@@ -42,6 +42,18 @@ class HomeFragment : Fragment() {
         restaurantAdapter = RestaurantRecyclerViewAdapter(restaurantList)
         recyclerView.adapter = restaurantAdapter
 
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                restaurantAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
         return view
     }
 
