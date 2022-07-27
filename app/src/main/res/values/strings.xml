@@ -26,4 +26,14 @@
     <string name="restaurant_name">Restaurant name</string>
     <string name="restaurant_location">Restaurant Location</string>
     <string name="add_review">Add review</string>
+    <string name="review_hint">Write about your experience</string>
+    <string name="tag_location">Tag location</string>
+    <string name="add_image">Add image</string>
+    <string name="submit">Submit</string>
+    <string name="review_empty_error">You must enter a review body</string>
+    <string name="review_length_error">Review must be at least 4 characters</string>
+    <string name="rating_empty_error">You must select a rating!</string>
+    <string name="review_success_msg">Review successfully added</string>
+    <string name="review_failed_msg">Could not add review</string>
+    <string name="review_login_error">You need to be logged in to add a review</string>
 </resources>
