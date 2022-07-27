@@ -3,20 +3,25 @@ package com.example.restaurantreviewapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.restaurantreviewapp.models.Review
+import com.example.restaurantreviewapp.viewmodels.ReviewListViewModel
 import com.google.android.material.textview.MaterialTextView
 
 class RestaurantActivity : AppCompatActivity() {
 
     private lateinit var recyclerAdapter: ReviewsRecyclerViewAdapter
     private var reviewsList = ArrayList<Review>()
+    private lateinit var reviewsListViewModel: ReviewListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
+
+        reviewsListViewModel = ViewModelProvider(this).get(ReviewListViewModel::class.java)
 
         val recyclerView = findViewById<RecyclerView>(R.id.restaurant_reviews_recycler)
 
@@ -36,8 +41,24 @@ class RestaurantActivity : AppCompatActivity() {
         restaurantLocation.text = address
         categoryTitle.text = category
 
+        if (restaurantName != "") {
+            getReviews(restaurantName)
+        }
+
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerAdapter = ReviewsRecyclerViewAdapter(reviewsList)
         recyclerView.adapter = recyclerAdapter
     }
+
+    private fun getReviews(restaurantName: String) {
+        reviewsListViewModel.getReviews(restaurantName).observe(this, { reviews ->
+            if (reviews != null) {
+                reviewsList.clear()
+                reviewsList.addAll(reviews)
+                recyclerAdapter.notifyDataSetChanged()
+            }
+        })
+    }
+
+
 }
