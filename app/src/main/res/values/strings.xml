@@ -23,4 +23,7 @@
     <string name="home_header">Home</string>
     <string name="restaurant">Restaurant</string>
     <string name="review">Review</string>
+    <string name="restaurant_name">Restaurant name</string>
+    <string name="restaurant_location">Restaurant Location</string>
+    <string name="add_review">Add review</string>
 </resources>
