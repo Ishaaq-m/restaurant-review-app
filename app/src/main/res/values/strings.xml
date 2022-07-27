@@ -21,4 +21,6 @@
     <string name="title">Title</string>
     <string name="address">Address</string>
     <string name="home_header">Home</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="review">Review</string>
 </resources>
