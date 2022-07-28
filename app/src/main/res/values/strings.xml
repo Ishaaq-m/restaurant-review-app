@@ -40,4 +40,8 @@
     <string name="confirm">Confirm</string>
     <string name="location_disabled_msg">Could not retrieve location as location services are disabled</string>
     <string name="location_denied_msg">Location permission denied!</string>
+    <string name="edit_failed_msg">You cannot edit this review!</string>
+    <string name="edit_login_required">You need to be logged in to edit a review</string>
+    <string name="edit_success_msg">Review edit successful</string>
+    <string name="edit_error_msg">Error editing review</string>
 </resources>
