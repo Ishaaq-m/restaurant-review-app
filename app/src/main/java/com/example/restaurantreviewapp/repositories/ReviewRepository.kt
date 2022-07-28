@@ -10,6 +10,7 @@ import com.google.firebase.firestore.Query
 class ReviewRepository {
 
     private var reviewList: MutableLiveData<List<Review>> = MutableLiveData()
+    private var userReviewsList: MutableLiveData<List<Review>> = MutableLiveData()
 
     fun getReviews(restaurantName: String) : LiveData<List<Review>> {
         val db = FirebaseFirestore.getInstance()
@@ -26,5 +27,23 @@ class ReviewRepository {
                 }
             }
         return reviewList
+    }
+
+    fun getUserReviews(userUID: String) : LiveData<List<Review>> {
+        val db = FirebaseFirestore.getInstance()
+
+        db.collectionGroup("reviews")
+            .whereEqualTo("uid", userUID)
+            .orderBy("created", Query.Direction.DESCENDING)
+            .addSnapshotListener { result, e ->
+                if (e != null) {
+                    Log.w("tag", "Failed to listen to user reviews", e)
+                    return@addSnapshotListener
+                }
+                if (result != null) {
+                    userReviewsList.postValue(result.toObjects(Review::class.java))
+                }
+            }
+        return userReviewsList
     }
 }

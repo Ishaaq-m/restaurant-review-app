@@ -44,4 +44,5 @@
     <string name="edit_login_required">You need to be logged in to edit a review</string>
     <string name="edit_success_msg">Review edit successful</string>
     <string name="edit_error_msg">Error editing review</string>
+    <string name="your_reviews_title">Your Reviews</string>
 </resources>

@@ -13,4 +13,8 @@ class ReviewListViewModel : ViewModel() {
         return reviewRepository.getReviews(restaurantName)
     }
 
+    fun getUserReviews(userUID: String) : LiveData<List<Review>> {
+        return reviewRepository.getUserReviews(userUID)
+    }
+
 }
