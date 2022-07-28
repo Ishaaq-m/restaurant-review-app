@@ -1,5 +1,7 @@
 package com.example.restaurantreviewapp
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +31,19 @@ class AddReviewActivity : AppCompatActivity() {
             uri = result
         }
     }
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                val address = intent?.getStringExtra("address")
+
+                if (address != null) {
+                    restaurantAddress = address
+                    displayAddress(address)
+                }
+            }
+        }
 
     private lateinit var auth: FirebaseAuth
     private lateinit var storageRef: FirebaseStorage
@@ -44,6 +61,7 @@ class AddReviewActivity : AppCompatActivity() {
         val submitBtn = findViewById<MaterialButton>(R.id.submit_btn)
         val cancelBtn = findViewById<MaterialButton>(R.id.cancel_btn)
         val imageBtn = findViewById<MaterialButton>(R.id.add_image_btn)
+        val locationBtn = findViewById<MaterialButton>(R.id.tag_location_btn)
 
         val restaurantIntent = intent
         val restaurantName = restaurantIntent.getStringExtra("restaurantName").toString()
@@ -62,6 +80,11 @@ class AddReviewActivity : AppCompatActivity() {
 
         imageBtn.setOnClickListener {
             imagePicker()
+        }
+
+        locationBtn.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startForResult.launch(intent)
         }
 
 
@@ -93,6 +116,11 @@ class AddReviewActivity : AppCompatActivity() {
 
     private fun imagePicker() {
         getImageGallery.launch("image/*")
+    }
+
+    private fun displayAddress(address: String) {
+        val addressText = findViewById<MaterialTextView>(R.id.address)
+        addressText.text = address
     }
 
     private fun createReview(view: View, restaurantName: String, review: String, rating: Float) {

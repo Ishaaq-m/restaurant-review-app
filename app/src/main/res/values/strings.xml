@@ -36,4 +36,8 @@
     <string name="review_success_msg">Review successfully added</string>
     <string name="review_failed_msg">Could not add review</string>
     <string name="review_login_error">You need to be logged in to add a review</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="confirm">Confirm</string>
+    <string name="location_disabled_msg">Could not retrieve location as location services are disabled</string>
+    <string name="location_denied_msg">Location permission denied!</string>
 </resources>
