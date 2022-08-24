@@ -48,4 +48,15 @@
     <string name="added_to_favourites_msg">Restaurant added to favourites</string>
     <string name="removed_from_favourites_msg">Restaurant removed from favourites</string>
     <string name="favourite_login_required_msg">You must be logged in to favourite an item!</string>
+    <string name="add_restaurant">Add restaurant</string>
+    <string name="login_required_msg">You need to be logged in to add a restaurant</string>
+    <string name="new_restaurant">New Restaurant</string>
+    <string name="category">Category</string>
+    <string name="restaurant_name_error">You must enter a restaurant name</string>
+    <string name="category_empty_msg">You must enter a category</string>
+    <string name="restaurant_length_error">Restaurant name must be at least 3 characters</string>
+    <string name="category_length_msg">Category must be at least 3 characters</string>
+    <string name="location_required_message">You must tag a location</string>
+    <string name="restaurant_added_msg">Restaurant successfully added</string>
+    <string name="add_restaurant_failed">Could not add restaurant</string>
 </resources>
