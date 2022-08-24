@@ -45,4 +45,7 @@
     <string name="edit_success_msg">Review edit successful</string>
     <string name="edit_error_msg">Error editing review</string>
     <string name="your_reviews_title">Your Reviews</string>
+    <string name="added_to_favourites_msg">Restaurant added to favourites</string>
+    <string name="removed_from_favourites_msg">Restaurant removed from favourites</string>
+    <string name="favourite_login_required_msg">You must be logged in to favourite an item!</string>
 </resources>
