@@ -39,7 +39,7 @@ class ReviewsFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.user_reviews_recycler)
 
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerAdapter = ReviewsRecyclerViewAdapter(userReviewsList)
+        recyclerAdapter = ReviewsRecyclerViewAdapter(userReviewsList, "userView")
         recyclerView.adapter = recyclerAdapter
 
         return view

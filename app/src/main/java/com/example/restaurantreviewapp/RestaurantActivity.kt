@@ -106,7 +106,7 @@ class RestaurantActivity : AppCompatActivity() {
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerAdapter = ReviewsRecyclerViewAdapter(reviewsList)
+        recyclerAdapter = ReviewsRecyclerViewAdapter(reviewsList, "restaurantView")
         recyclerView.adapter = recyclerAdapter
     }
 

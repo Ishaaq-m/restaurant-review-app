@@ -12,8 +12,10 @@ import com.example.restaurantreviewapp.models.Review
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ReviewsRecyclerViewAdapter(private val userReviewsList: ArrayList<Review>) : RecyclerView.Adapter<ReviewsRecyclerViewAdapter.ViewHolder>() {
+class ReviewsRecyclerViewAdapter(private val userReviewsList: ArrayList<Review>, private val type: String) : RecyclerView.Adapter<ReviewsRecyclerViewAdapter.ViewHolder>() {
 
     private lateinit var auth: FirebaseAuth
 
@@ -30,7 +32,21 @@ class ReviewsRecyclerViewAdapter(private val userReviewsList: ArrayList<Review>)
         val info = userReviewsList[position]
         val user = auth.currentUser
 
-        holder.restaurantName.text = info.restaurantID
+        //removes everything after the @ symbol
+        val username = info.email.substring(0, info.email.indexOf("@"))
+
+        if (type == "restaurantView") {
+            //converts first character to uppercase
+            holder.restaurantName.text = username.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }
+        }
+        else {
+            holder.restaurantName.text = info.restaurantID
+        }
+
         holder.restaurantRating.rating = info.rating
         holder.restaurantAddress.text = info.address
         holder.userReview.text = info.review
