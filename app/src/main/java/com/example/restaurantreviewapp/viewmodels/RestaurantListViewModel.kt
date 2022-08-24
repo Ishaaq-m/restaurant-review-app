@@ -13,4 +13,8 @@ class RestaurantListViewModel : ViewModel() {
         return restaurantRepository.getRestaurants()
     }
 
+    fun getFavouriteRestaurants() : LiveData<List<Restaurant>> {
+        return restaurantRepository.getFavouriteRestaurants()
+    }
+
 }

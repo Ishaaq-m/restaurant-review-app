@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class RestaurantRepository {
 
     private var restaurantList: MutableLiveData<List<Restaurant>> = MutableLiveData()
+    private var favouritesList: MutableLiveData<List<Restaurant>> = MutableLiveData()
     private var restaurant: MutableLiveData<Restaurant> = MutableLiveData()
 
     fun getRestaurants() : LiveData<List<Restaurant>> {
@@ -26,6 +27,25 @@ class RestaurantRepository {
                 }
             }
         return restaurantList
+    }
+
+    fun getFavouriteRestaurants() : LiveData<List<Restaurant>> {
+        val db = FirebaseFirestore.getInstance()
+        val user = FirebaseAuth.getInstance().currentUser
+
+        if (user != null) {
+            db.collection("users").document(user.uid).collection("favourites")
+                .addSnapshotListener { result, e ->
+                    if (e != null) {
+                        Log.w("tag", "Failed to listen to favourites", e)
+                        return@addSnapshotListener
+                    }
+                    if (result != null) {
+                        favouritesList.postValue(result.toObjects(Restaurant::class.java))
+                    }
+                }
+        }
+        return favouritesList
     }
 
     fun getFavouriteRestaurantByName(restaurantName: String) : LiveData<Restaurant> {
