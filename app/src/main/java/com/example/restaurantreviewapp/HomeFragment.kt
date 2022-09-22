@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
 
         addButton.setOnClickListener {
             if (user != null) {
-                val intent = Intent(activity, AddRestaurant::class.java)
+                val intent = Intent(activity, AddRestaurantActivity::class.java)
                 startActivity(intent)
             } else {
                 Snackbar.make(view, R.string.login_required_msg, Snackbar.LENGTH_LONG).show()

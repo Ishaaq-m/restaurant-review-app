@@ -20,7 +20,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
-class AddRestaurant : AppCompatActivity() {
+class AddRestaurantActivity : AppCompatActivity() {
 
     //Retrieve image selected from gallery
     private val getImageGallery = registerForActivityResult(ActivityResultContracts.GetContent()) { result: Uri? ->
